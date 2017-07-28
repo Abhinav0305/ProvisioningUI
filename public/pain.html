@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pain</title>
+</head>
+<body>
+    <div class="container" ng-controller="painController">
+     <div>Search : <input type="text" placeholder="Subject id" size="20" maxlength="4" ng-model="searchText.subjectId">
+     </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>SubjectID</th>
+                <th>PainLevel</th>
+                <th>Note</th>
+                <th>Joint</th>
+                <th>TimeOfDay</th>
+                <th>Time</th>
+                <th>Creation Date</th>
+            </tr>
+        </thead>
+
+        <thead>
+        <tr ng-repeat="pain in painList | filter:searchText track by $index">
+            <th>{{pain.subjectId}}</th>
+            <th>{{pain.painLevel}}</th>
+            <th>{{pain.note}}</th>
+            <th>{{pain.joint}}</th>
+            <th>{{pain.timeOfDay}}</th>
+            <th>{{pain.time}}</th>
+            <th>{{pain.creation_date}}</th>
+        </tr>
+        </thead>
+    </table>
+    </div>
+</body>
+</html>

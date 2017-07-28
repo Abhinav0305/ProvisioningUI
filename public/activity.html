@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{message}}</title>
+</head>
+<body>
+<div class="container" ng-controller="activityController">
+<h1>Activity Entry</h1>
+<div>Search : <input type="text" placeholder="patient id" size="20" maxlength="4" ng-model="searchText.patient_id"></div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Patient ID</th>
+            <th>Duration</th>
+            <th>Recorded Time</th>
+            <th>Physical ID</th>
+            <th>Creation Date</th>
+        </tr>
+
+        </thead>
+        <thead>
+            <tr ng-repeat="activity in activityList | filter:searchText track by $index">
+                <th>{{activity.patient_id}}</th>
+                <th>{{activity.duration+" minutes"}}</th>
+                <th>{{activity.rec_time.slice(0,-5).replace("T"," ")}}</th>
+                <th>{{activity.act_id}}</th>
+                <th>{{activity.creation_date.slice(0,-5).replace("T"," ")}}</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+</body>
+</html>
