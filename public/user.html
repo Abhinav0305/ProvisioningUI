@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="container" ng-controller="userController">
+        <div>Search : <input type="text" placeholder="user id" size="20" maxlength="4" ng-model="searchText.user_name">
+            <button ng-click="addUser()" class="btn btn-primary">Add User</button>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>Password</th>
+                </tr>
+            </thead>
+            <thead>
+                <tr ng-repeat="user in userList | filter:searchText track by $index">
+                    <th>{{user.user_name}}</th>
+                    <th>{{user.password}}</th>
+                </tr>
+            </thead>
+        </table>
+
+    </div>
+</body>
+</html>

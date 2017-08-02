@@ -7,7 +7,9 @@
 <body>
 <div class="container" ng-controller="activityController">
 <h1>Activity Entry</h1>
-<div>Search : <input type="text" placeholder="patient id" size="20" maxlength="4" ng-model="searchText.patient_id"></div>
+<div>Search : <input type="text" placeholder="patient id" size="20" maxlength="4" ng-model="searchText.patient_id">
+    <button ng-click="createCsv()" class="btn btn-primary">Export to CSV</button>
+</div>
     <table class="table">
         <thead>
         <tr>

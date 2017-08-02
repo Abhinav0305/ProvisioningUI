@@ -7,6 +7,7 @@
 <body>
     <div class="container" ng-controller="painController">
      <div>Search : <input type="text" placeholder="Subject id" size="20" maxlength="4" ng-model="searchText.subjectId">
+         <button ng-click="createCsv()" class="btn btn-primary">Export to CSV</button>
      </div>
     <table class="table">
         <thead>
@@ -27,9 +28,9 @@
             <th>{{pain.painLevel}}</th>
             <th>{{pain.note}}</th>
             <th>{{pain.joint}}</th>
-            <th>{{pain.timeOfDay}}</th>
-            <th>{{pain.time}}</th>
-            <th>{{pain.creation_date}}</th>
+            <th>{{pain.timeOfDay.slice(0,-5).replace("T"," ")}}</th>
+            <th>{{pain.time.slice(0,-5).replace("T"," ")}}</th>
+            <th>{{pain.creation_date.slice(0,-5).replace("T"," ")}}</th>
         </tr>
         </thead>
     </table>

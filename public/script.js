@@ -12,7 +12,15 @@ var app=angular.module("Demo",["ngRoute"])
                         })
                         .when("/AssessmentEntry",{
                             templateUrl: "/assessment.html",
-                            controller: "/assessmentController"
+                            controller: "assessmentController"
+                        })
+                        .when("/",{
+                            templateUrl : "/user.html",
+                            controller : "userController"
+                        })
+                        .when("/Home",{
+                            templateUrl : "user.html",
+                            controller : "userController"
                         })
                     $locationProvider.html5Mode({
                         enabled: true,
@@ -149,7 +157,26 @@ var app=angular.module("Demo",["ngRoute"])
                         JSONToCSVConvertor($scope.activityList,'Data_Activity',true);
                     }
                 })
-                .controller("assessmentController",function ($scope) {
-                    console.log("hello");
+                .controller("assessmentController",function ($scope) {   //assessmentController
+                    console.log("hello");                                //assessmentController
                     $scope.message="Hello Assessment"
+                })
+                .controller("userController",function ($scope,$http) {
+                    console.log("www");
+                    $scope.message="User Page";
+                    $http({
+                        method : "GET",
+                        url    : "http://192.168.1.9:5353/api/v1/user",
+                        params : {}
+                    }).then(function mySuccess(response){
+                        $scope.userList=response.data;
+                    },function myError(response){
+                        $scope.userList=response.statusText;
+                    });
+                    function addNewUser(){
+
+                    }
+                    $scope.addUser=function () {
+                        addNewUser();
+                    }
                 })
